@@ -5,10 +5,10 @@ const initState = {
     content: [0]
 };
 const MainReducer = (state: any = initState, action: Inspect.ActionInspect) => {
-    const { type, payload } = action; 
+    const { type, payload } = action;
     switch (type) {
         case ADD:
-            return {...state, result: state.result + payload };
+            return { ...state, result: state.result + payload };
         case DECREASE:
             return state;
         case MULTIPLY:
@@ -16,8 +16,8 @@ const MainReducer = (state: any = initState, action: Inspect.ActionInspect) => {
         case DIVISION:
             return state;
         case CLEAR:
-            return {...initState};
-        default: 
+            return { ...initState };
+        default:
             return state;
     }
 };

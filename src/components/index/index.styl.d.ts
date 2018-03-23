@@ -3,6 +3,10 @@ export interface IIndexStyl {
   'display': string;
   'content': string;
   'result': string;
+  'ctrl': string;
+  'clear': string;
+  'active': string;
+  'animate': string;
 }
 
 export const locals: IIndexStyl;
