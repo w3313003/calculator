@@ -41,7 +41,7 @@
         "no-debugger": true,
         "no-duplicate-variable": true,
         "no-empty": true,
-        "no-eval": true,
+        "no-eval": false,
         "no-var": true,
         "no-shadowed-variable": true,
         "no-string-literal": true,

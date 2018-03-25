@@ -17,26 +17,32 @@ export default class extends React.Component<Inspect.NoCheck> {
             btn: ['C', 'DEL', '%', '/', 7, 8, 9, '*', 4, 5, 6, '-', 1, 2, 3, '+', '00', 0, '.', '='],
             clearActive: false
         };
-        enum Color {Red= 100, Green, Blue}
-        let c: Color = Color.Green;
-        console.log(c);
-
     }
-    _formatContent() {
+    _formatContent(): string {
         if (this.state.content instanceof Array) {
             return this.state.content.join('');
         }
-        return 0;
+        return '0';
     }
     MainClick = (v: number | string) => {
         if (v === 'C') {
             this.clear();
             return;
         }
-        if (typeof Number(v) === 'number' && v !== '00') {
+        console.log(v === '=');
+        if (v === '=') {
+            console.log(v);
+            this.getResult();
+        }
+        if (/[1-9]|[\+\-\*\/]/g.test(v as any) && v !== '00') {
             console.log(typeof Number(v) === 'number');
             this.input(v as number);
         }
+    }
+    getResult() {
+        this.setState({
+            result: eval(this._formatContent())
+        }) ;
     }
     clear() {
         if (!this.state.clearActive) {
@@ -88,7 +94,7 @@ export default class extends React.Component<Inspect.NoCheck> {
                                     {v}
                                 </li>
                             ) : (
-                                <li key={i}>
+                                <li key={i} onClick={() => this.MainClick(v)}>
                                     <div>
                                         {v}
                                     </div>
